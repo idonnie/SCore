@@ -2,5 +2,5 @@ SCore
 
 Stuff used by me in Java/Scala projects, which makes sense as separate library
 
-Notably:
-- score.money.{Amount, Coef, Percent} are fixed point BigDecimal-like classes, used in financial calculations for the sake of correctness and easy interoperability with Java/Scala standard numeric entities. Their size is 128 bit, accuracy is (19, 18), and Scala statically checks consistency of formulas like this: (Amount(0.50) + Amount(4.2)) * Percent(80)
+Contains:
+- score.money is Scala fixed-point currency library, which is used as alternative to BigDecimal and Double in financial calculations, because: a) consume less memory - 128-bit (16-byte, implemented as 4-int inside); b) still interoperable with standard Java/Scala numeric entities, and c) Scala statically checks consistency of expressions: (Amount(0.50) + Amount(4.2)) * Percent(80)
