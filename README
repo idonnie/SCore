@@ -1,6 +1,14 @@
 SCore
 
-Stuff used by me in Java/Scala projects, which makes sense as separate library
+Package score.money was used by me in a Java/Scala project as a fixed-point currency library for financial calculations, alternative to BigDecimal and Double, because: 
+1) consume 2 times less memory, for high volume of data - 128-bit (16-byte, implemented as 4-int inside); 
+2) interoperable with standard Java/Scala numeric entities; 
+3) precision and rounding mode were carefully selected;
+4) Scala statically checks consistency of some expressions: 
+Amount(4500) + Amount(4500) * Percent(80) - correct
+Percent(80) * Percent(80) - not allowed.
 
-Contains:
-- score.money is Scala fixed-point currency library, which is used as alternative to BigDecimal and Double in financial calculations, because: a) consume less memory - 128-bit (16-byte, implemented as 4-int inside); b) still interoperable with standard Java/Scala numeric entities, and c) Scala statically checks consistency of expressions: (Amount(0.50) + Amount(4.2)) * Percent(80)
+TODO
+- consistency checks must operate as "assertion" methods called on a final expression;
+- use Scala 2.10 macros in addition to implicits, for compile-time consistency checks;
+- more unit tests.
